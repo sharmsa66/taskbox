@@ -3,8 +3,13 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
+    "module": "commonjs",
+    "allowJs": true,
     "types": [
-      "jasmine"
+      "jest",
+      "jquery",
+      "jsdom",
+      "node"
     ]
   },
   "files": [
