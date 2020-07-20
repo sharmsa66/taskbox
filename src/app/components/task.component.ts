@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 
 @Component({
- selector: 'app-task',
- template: `
+  selector: 'app-task',
+  template: `
  <div class="list-item {{ task?.state }}">
       <label class="checkbox">
         <input
@@ -11,11 +11,16 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
           [defaultChecked]="task?.state === 'TASK_ARCHIVED'"
           disabled="true"
           name="checked"
+
         />
         <span class="checkbox-custom" (click)="onArchive(task.id)"></span>
       </label>
       <div class="title">
-        <input type="text" [value]="task?.title" readonly="true" placeholder="Input title" />
+        <input type="text"
+        [value]="task?.title"
+         readonly="true"
+         placeholder="Input title"
+         [ngStyle]="{textOverflow:'ellipsis'}" />
       </div>
       <div class="actions">
         <a *ngIf="task?.state !== 'TASK_ARCHIVED'" (click)="onPin(task.id)">
@@ -42,11 +47,11 @@ export class TaskComponent implements OnInit {
 
   }
 
-   onPin(id) {
-     this.onPinTask.emit(id);
-   }
+  onPin(id) {
+    this.onPinTask.emit(id);
+  }
 
-   onArchive(id) {
-     this.onArchiveTask.emit(id);
-   }
+  onArchive(id) {
+    this.onArchiveTask.emit(id);
+  }
 }
